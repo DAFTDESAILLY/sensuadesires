@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "511847468004",
+    "project_id": "sensuadesires",
+    "storage_bucket": "sensuadesires.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511847468004:android:45b8ec7225179cfef7d5f1",
+        "android_client_info": {
+          "package_name": "com.desailly.chat_sensuadesires"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511847468004-bjcf93l3on6e781gg47t5s1nst9gqo5f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.desailly.chat_sensuadesires",
+            "certificate_hash": "25ed044276beaff20fdf07d3c611e5e70b6c04a2"
+          }
+        },
+        {
+          "client_id": "511847468004-b3j7t25lhln76o5gb9ggt63i3p036bm1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUs1rWTNxTmG3njdLtEF6nYXySgukVXjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511847468004-b3j7t25lhln76o5gb9ggt63i3p036bm1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

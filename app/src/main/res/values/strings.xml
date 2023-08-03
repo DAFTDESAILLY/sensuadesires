@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">sensuadesires</string>
+    <string name="nombre_desarrollador">By Sheko</string>
+
+    <string name="Btn_ir_registro">Registrarme</string>
+    <string name="Btn_ir_logeo">Ingresar</string>
+
+    <string name="R_Et_nombre_usuario">Usuario</string>
+    <string name="R_Et_email">Email</string>
+    <string name="R_Et_password">Password</string>
+    <string name="R_Et_r_password">Confirmar Password</string>
+    <string name="Btn_registrar">Registrar</string>
+
+
+    <string name="menu_salir">Cerrar Sesion</string>
+    <string name="menu_perfil">Perfil Usuario</string>
+    <string name="menu_acerca_de">Acerca de</string>
+
+
+    <string name="L_Et_email">Email</string>
+    <string name="L_Et_password">Password</string>
+    <string name="Btn_login">Ingresar</string>
+
+    <string name="Nombre_usuario">Nombre de Usuario</string>
+
+    <string name="Item_nombre_usuario">Nombre de Usuario</string>
+    <string name="Item_email_usuario">Email de Usuario</string>
+
+    <string name="Et_buscar_usuario">Buscar</string>
+
+    <!--perfil usuario -->
+    <string name="P_n_usuario">Nombre De Usuario</string>
+    <string name="P_email">Email</string>
+    <string name="P_nombre">Nombre </string>
+    <string name="P_apellido">Apellido</string>
+    <string name="P_profesion">Profesion</string>
+    <string name="P_domicilio">Domicilio</string>
+    <string name="P_edad">Edad</string>
+    <string name="P_telefono">Telefono</string>
+    <string name="Btn_Guardar">Guardar</string>
+
+
+    <!--editar img -->
+    <string name="BtnElegirImagenDe">Elegir Imagen</string>
+    <string name="BtnActualizarImagen">Actualizar</string>
+
+
+    <!--cuadro de dialogo -->
+    <string name="txt_seleccionar_imagen">Seleccionar imagen de</string>
+    <string name="Btn_abrir_galeria">Galeria</string>
+    <string name="Btn_abrir_camara">Camara</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+</resources>
