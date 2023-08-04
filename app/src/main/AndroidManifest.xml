@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Chat_sensuadesires"
         tools:targetApi="31">
         <activity
+            android:name=".Chat.MensajesActivity"
+            android:exported="false" />
+        <activity
             android:name=".Perfil.EditarImagenPerfil"
             android:exported="false" />
         <activity

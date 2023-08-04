@@ -52,5 +52,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
 
+    <!--chat -->
+    <string name="N_usuario_chat">Nombre de Usuario</string>
+    <string name="Et_mensaje">Mensaje</string>
+
 
 </resources>

@@ -1,14 +1,17 @@
 package com.desailly.chat_sensuadesires.Adaptador
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.RecyclerListener
 import com.bumptech.glide.Glide
+import com.desailly.chat_sensuadesires.Chat.MensajesActivity
 import com.desailly.chat_sensuadesires.Modelo.Usuario
 import com.desailly.chat_sensuadesires.R
 
@@ -49,5 +52,13 @@ class AdaptadorUsuario (context : Context,listaUsuarios : List<Usuario>) : Recyc
         holder.nombre_usuario.text = usuario.getN_Usuario()
         holder.email_usuario.text = usuario.getEmail()
         Glide.with(context).load(usuario.getImagen()).placeholder(R.drawable.ic_item_usuario).into(holder.imagen_usuario)
+
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context,MensajesActivity::class.java)
+            intent.putExtra("uid_usuario",usuario.getUid())
+            Toast.makeText(context, "El usuario seleccionado es:"+usuario.getN_Usuario(), Toast.LENGTH_SHORT).show()
+            context.startActivity(intent)
+        }
     }
 }
