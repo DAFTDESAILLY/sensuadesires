@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
@@ -13,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var L_Et_password : EditText
     private lateinit var Btn_login : Button
     private lateinit var auth : FirebaseAuth
+    private lateinit var TXT_ir_registro : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,10 @@ class LoginActivity : AppCompatActivity() {
         Btn_login.setOnClickListener {
             ValidarDatos()
         }
+        TXT_ir_registro.setOnClickListener {
+            val intent = Intent(this@LoginActivity,RegistroActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
@@ -32,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
         L_Et_password = findViewById(R.id.L_Et_password)
         Btn_login = findViewById(R.id.Btn_login)
         auth = FirebaseAuth.getInstance()
+        TXT_ir_registro = findViewById(R.id.TXT_ir_registro)
     }
     private fun ValidarDatos() {
 
