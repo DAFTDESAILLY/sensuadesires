@@ -56,5 +56,8 @@
     <string name="N_usuario_chat">Nombre de Usuario</string>
     <string name="Et_mensaje">Mensaje</string>
 
+    <!-- item chat -->
+    <string name="TXT_ver_mensaje">Hola</string>
+
 
 </resources>
