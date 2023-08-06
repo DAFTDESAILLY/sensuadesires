@@ -23,11 +23,16 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import androidx.activity.result.ActivityResult
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.desailly.chat_sensuadesires.Adaptador.AdaptadorChat
+import com.desailly.chat_sensuadesires.Modelo.Chat
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
+import java.util.ArrayList
 
 
 class MensajesActivity : AppCompatActivity() {
@@ -40,6 +45,10 @@ class MensajesActivity : AppCompatActivity() {
     var uid_usuario_seleccionado : String =""
     var firebaseUser : FirebaseUser? = null
     private var imagenUri : Uri?= null
+
+    lateinit var RV_chats :  RecyclerView
+    var chatAdapter : AdaptadorChat? = null
+    var chatList : List<Chat>? = null
 
 
 
@@ -118,6 +127,12 @@ class MensajesActivity : AppCompatActivity() {
         IB_Enviar = findViewById(R.id.IB_Enviar)
         firebaseUser = FirebaseAuth.getInstance().currentUser
         IB_Adjuntar = findViewById(R.id.IB_Adjuntar)
+
+        RV_chats = findViewById(R.id.RV_chats)
+        RV_chats.setHasFixedSize(true)
+        var linearLayoutManager = LinearLayoutManager(applicationContext)
+        linearLayoutManager.stackFromEnd = true
+        RV_chats.layoutManager = linearLayoutManager
     }
 
     private fun LeerInfoUsuarioSeleccionado(){
@@ -133,6 +148,35 @@ class MensajesActivity : AppCompatActivity() {
                 Glide.with(applicationContext).load(usuario.getImagen())
                     .placeholder(R.drawable.ic_item_usuario)
                     .into(imagen_perfil_chat)
+
+                RecuperarMensajes(firebaseUser!!.uid,uid_usuario_seleccionado,
+                    usuario.getImagen()!!
+                )
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    private fun RecuperarMensajes(EmisorUid: String, ReceptorUid: String, ReceptorImagen: String) {
+        chatList = ArrayList()
+        val reference = FirebaseDatabase.getInstance().reference.child("Chats")
+        reference.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                (chatList as ArrayList<Chat>).clear()
+                for (sn in snapshot.children){
+                    val chat = sn.getValue(Chat::class.java)
+
+                    if (chat!!.getReceptor().equals(EmisorUid)&& chat.getEmisor().equals(ReceptorUid)
+                        ||chat.getReceptor().equals(ReceptorUid)&& chat.getEmisor().equals(EmisorUid)){
+                        (chatList as ArrayList<Chat>).add(chat)
+                    }
+                    chatAdapter= AdaptadorChat(this@MensajesActivity,(chatList as ArrayList<Chat>),ReceptorImagen!!)
+                    RV_chats.adapter= chatAdapter
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
