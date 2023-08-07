@@ -43,10 +43,16 @@
     <string name="P_telefono">Telefono</string>
     <string name="Btn_Guardar">Guardar</string>
 
+     <string name="Btn_verificar">No verificado</string>
+
  <!-- Establecer telefono -->
     <string name="Establecer_Telefono">Escriba su numero</string>
     <string name="Btn_aceptar_Telefono">Aceptar</string>
 
+
+  <!--Cuadro de dialogo cuenta -->
+    <string name="CuentaVerificadaTXT">Cuenta verificada</string>
+    <string name="BtnEntendidoVerificado">Ok</string>
 
     <!--editar img -->
     <string name="BtnElegirImagenDe">Elegir Imagen</string>

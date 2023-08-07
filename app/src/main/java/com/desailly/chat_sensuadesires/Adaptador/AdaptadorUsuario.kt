@@ -15,14 +15,16 @@ import com.desailly.chat_sensuadesires.Chat.MensajesActivity
 import com.desailly.chat_sensuadesires.Modelo.Usuario
 import com.desailly.chat_sensuadesires.R
 
-class AdaptadorUsuario (context : Context,listaUsuarios : List<Usuario>) : RecyclerView.Adapter<AdaptadorUsuario.ViewHolder?>(){
+class AdaptadorUsuario (context : Context,listaUsuarios : List<Usuario>,chatLeido : Boolean) : RecyclerView.Adapter<AdaptadorUsuario.ViewHolder?>(){
 
     private  val context : Context
     private  val listaUsuarios : List<Usuario>
+    private  val chatLeido : Boolean
 
     init {
         this.context = context
         this.listaUsuarios = listaUsuarios
+        this.chatLeido = chatLeido
     }
 
 

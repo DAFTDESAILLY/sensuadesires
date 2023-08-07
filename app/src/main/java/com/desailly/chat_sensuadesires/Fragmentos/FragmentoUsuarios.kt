@@ -75,9 +75,9 @@ class FragmentoUsuarios : Fragment() {
                             (usuarioLista as ArrayList<Usuario>).add(usuario)
                         }
                     }
+                    usuarioAdaptador = AdaptadorUsuario(context!!,usuarioLista!!,false)
+                    rvUsuario!!.adapter = usuarioAdaptador
                 }
-                usuarioAdaptador = AdaptadorUsuario(context!!,usuarioLista!!)
-                rvUsuario!!.adapter = usuarioAdaptador
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -99,7 +99,7 @@ class FragmentoUsuarios : Fragment() {
                         (usuarioLista as ArrayList<Usuario>).add(usuario)
                     }
                 }
-                usuarioAdaptador = AdaptadorUsuario(context!!,usuarioLista!!)
+                usuarioAdaptador = AdaptadorUsuario(context!!,usuarioLista!!,false)
                 rvUsuario!!.adapter = usuarioAdaptador
             }
 
