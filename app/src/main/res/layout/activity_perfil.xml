@@ -70,6 +70,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <TextView
+                    android:text="@string/P_proveedor_txt"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0.5dp"
+                    android:backgroundTint="#8bd3dd"
+                    android:layout_marginStart="5dp"
+                    app:cardCornerRadius="10dp">
+
+                    <TextView
+                        android:id="@+id/P_proveedor"
+                        android:text="@string/P_proveedor"
+                        android:textSize="17sp"
+                        android:padding="10dp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,19 +175,31 @@
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <!-- telefono -->
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
-                <EditText
-                    android:id="@+id/P_telefono"
-                    android:hint="@string/P_telefono"
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/P_telefono"
+                        android:text="@string/P_telefono"
+                        android:textSize="18sp"
+                        android:layout_gravity="center"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/Editar_Telefono"
+                    android:src="@drawable/telefono"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
             <Button
 

@@ -32,6 +32,8 @@
 
     <!--perfil usuario -->
     <string name="P_n_usuario">Nombre De Usuario</string>
+    <string name="P_proveedor_txt">Proveedor</string>
+    <string name="P_proveedor">--</string>
     <string name="P_email">Email</string>
     <string name="P_nombre">Nombre </string>
     <string name="P_apellido">Apellido</string>
@@ -40,6 +42,10 @@
     <string name="P_edad">Edad</string>
     <string name="P_telefono">Telefono</string>
     <string name="Btn_Guardar">Guardar</string>
+
+ <!-- Establecer telefono -->
+    <string name="Establecer_Telefono">Escriba su numero</string>
+    <string name="Btn_aceptar_Telefono">Aceptar</string>
 
 
     <!--editar img -->
