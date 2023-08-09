@@ -6,11 +6,15 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
@@ -27,8 +31,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.desailly.chat_sensuadesires.Adaptador.AdaptadorChat
 import com.desailly.chat_sensuadesires.Modelo.Chat
+import com.desailly.chat_sensuadesires.Perfil.PerfilVisitado
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
@@ -49,6 +55,9 @@ class MensajesActivity : AppCompatActivity() {
     lateinit var RV_chats :  RecyclerView
     var chatAdapter : AdaptadorChat? = null
     var chatList : List<Chat>? = null
+
+    var reference : DatabaseReference? = null
+    var seenListener : ValueEventListener?=null
 
 
 
@@ -72,6 +81,8 @@ class MensajesActivity : AppCompatActivity() {
                 Et_mensaje.setText("")
             }
         }
+
+        MensajeVisto(uid_usuario_seleccionado)
     }
 
 
@@ -121,6 +132,13 @@ class MensajesActivity : AppCompatActivity() {
     }
 
     private fun InicializarVistas(){
+
+       val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar_chat)
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title =""
+
+
+
         imagen_perfil_chat = findViewById(R.id.imagen_perfil_chat)
         N_usuario_chat = findViewById(R.id.N_usuario_chat)
         Et_mensaje = findViewById(R.id.Et_mensaje)
@@ -186,6 +204,25 @@ class MensajesActivity : AppCompatActivity() {
         })
     }
 
+    private fun MensajeVisto(usuarioUid : String){
+        reference = FirebaseDatabase.getInstance().reference.child("Chats")
+        seenListener = reference!!.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+               for (dataSnapshot in snapshot.children){
+                   val chat = dataSnapshot.getValue(Chat::class.java)
+                   if (chat!!.getReceptor().equals(firebaseUser!!.uid)&&chat!!.getEmisor().equals(usuarioUid)){
+                       val hashMap = HashMap<String,Any>()
+                       hashMap["visto"] = true
+                       dataSnapshot.ref.updateChildren(hashMap)
+                   }
+               }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
     private fun AbrirGaleria() {
        val intent = Intent(Intent.ACTION_PICK)
         intent.type ="image/*"
@@ -267,6 +304,28 @@ class MensajesActivity : AppCompatActivity() {
     )
 
 
+    override fun onPause() {
+        super.onPause()
+        reference!!.removeEventListener(seenListener!!)
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater :MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_visitar_perfil,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return  when(item.itemId){
+            R.id.menu_visitar->{
+                val intent = Intent(applicationContext,PerfilVisitado::class.java)
+                intent.putExtra("uid",uid_usuario_seleccionado)
+                startActivity(intent)
+                return true
+            }
+            else->super.onOptionsItemSelected(item)
+        }
+
+    }
 
 }

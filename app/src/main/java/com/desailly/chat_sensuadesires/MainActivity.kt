@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.desailly.chat_sensuadesires.Fragmentos.FragmentoChats
 import com.desailly.chat_sensuadesires.Fragmentos.FragmentoUsuarios
+import com.desailly.chat_sensuadesires.Modelo.Chat
 import com.desailly.chat_sensuadesires.Modelo.Usuario
 import com.desailly.chat_sensuadesires.Perfil.PerfilActivity
 import com.google.android.material.tabs.TabLayout
@@ -56,13 +57,41 @@ class MainActivity : AppCompatActivity() {
         val tabLayout : TabLayout = findViewById(R.id.TabLayoutMain)
         val viewPager : ViewPager = findViewById(R.id.ViewPagerMain)
 
-        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+       /* val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
 
         viewPagerAdapter.addItem(FragmentoUsuarios(),"Usuarios")
         viewPagerAdapter.addItem(FragmentoChats(),"Chats")
 
         viewPager.adapter= viewPagerAdapter
-        tabLayout.setupWithViewPager(viewPager)
+        tabLayout.setupWithViewPager(viewPager)*/
+
+        val ref = FirebaseDatabase.getInstance().reference.child("Chats")
+        ref.addValueEventListener(object  : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+               val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+                var contMensajesNoLeidos = 0
+                for (dataSnapshot in snapshot.children){
+                    val chat= dataSnapshot.getValue(Chat::class.java)
+                    if (chat!!.getReceptor().equals(firebaseUser!!.uid)&& !chat.isVisto()){
+                        contMensajesNoLeidos +=1
+                    }
+                }
+                if (contMensajesNoLeidos == 0){
+                    viewPagerAdapter.addItem(FragmentoChats(),"Chats")
+                }
+                else{
+                    viewPagerAdapter.addItem(FragmentoChats(),"[$contMensajesNoLeidos]Chats")
+                }
+                viewPagerAdapter.addItem(FragmentoUsuarios(),"Usuarios")
+                viewPager.adapter = viewPagerAdapter
+                tabLayout.setupWithViewPager(viewPager)
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
 
     }
 

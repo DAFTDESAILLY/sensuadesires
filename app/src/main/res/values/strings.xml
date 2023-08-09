@@ -2,7 +2,7 @@
     <string name="app_name">sensuadesires</string>
     <string name="nombre_desarrollador">By Sheko</string>
 
-   <string name="TXT_no_cuenta">No tengo cuenta</string>
+ <string name="TXT_no_cuenta">No tengo cuenta</string>
     <string name="TXT_ir_registro">Registrarme</string>
     <string name="Btn_ir_logeo">Ingresar Con Email</string>
     <string name="Btn_login_google">Google</string>
@@ -17,6 +17,8 @@
     <string name="menu_salir">Cerrar Sesion</string>
     <string name="menu_perfil">Perfil Usuario</string>
     <string name="menu_acerca_de">Acerca de</string>
+
+    <string name="menu_visitar">Perfil</string>
 
 
     <string name="L_Et_email">Email</string>
@@ -43,14 +45,14 @@
     <string name="P_telefono">Telefono</string>
     <string name="Btn_Guardar">Guardar</string>
 
-     <string name="Btn_verificar">No verificado</string>
+ <string name="Btn_verificar">No verificado</string>
 
  <!-- Establecer telefono -->
     <string name="Establecer_Telefono">Escriba su numero</string>
     <string name="Btn_aceptar_Telefono">Aceptar</string>
 
 
-  <!--Cuadro de dialogo cuenta -->
+ <!--Cuadro de dialogo cuenta -->
     <string name="CuentaVerificadaTXT">Cuenta verificada</string>
     <string name="BtnEntendidoVerificado">Ok</string>
 
@@ -69,6 +71,34 @@
     <!--chat -->
     <string name="N_usuario_chat">Nombre de Usuario</string>
     <string name="Et_mensaje">Mensaje</string>
+
+   <!--imagen perfil usuario-->
+   <string name="PV_Perfil_TXT">Perfil de usuario</string>
+   <string name="PV_NombreU">Nombre de usuario</string>
+   <string name="PV_EmailU">Email de usuario</string>
+   <string name="PV_Uid_TXT">Identificador:</string>
+   <string name="PV_Uid">Uid:</string>
+
+   <string name="PV_nombres_TXT">Nombres: </string>
+   <string name="PV_nombres">-- </string>
+   <string name="PV_apellidos_TXT">Apellidos: </string>
+   <string name="PV_apellidos">--</string>
+   <string name="PV_profesion_TXT">Profecion: </string>
+   <string name="PV_profesion">--</string>
+   <string name="PV_telefono_TXT">Telefono: </string>
+   <string name="PV_telefono">--</string>
+   <string name="PV_edad_TXT">Edad: </string>
+   <string name="PV_edad">--</string>
+   <string name="PV_domicilio_TXT">Domicilio: </string>
+   <string name="PV_domicilio">--</string>
+   <string name="PV_proveedor_TXT">Proveedor: </string>
+   <string name="PV_proveedor">--</string>
+
+
+    <string name="Btn_llamar">Llamar</string>
+
+
+
 
     <!-- item chat -->
     <string name="TXT_ver_mensaje">Hola ¿Como estas?</string>

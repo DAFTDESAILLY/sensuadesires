@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout
+import android.widget.RelativeLayout.LayoutParams
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -81,6 +83,27 @@ class AdaptadorChat (contexto : Context,chatLista:List<Chat>,imagenUrl:String)
         /* contiene solo texto */
         else{
             holder.TXT_ver_mensaje!!.text = chat.getMensaje()
+        }
+
+            /*mensaje visto*/
+        if(position==chatLista.size-1){
+          if (chat.isVisto()){
+              holder.TXT_mensaje_visto!!.text = "Visto"
+              if (chat.getMensaje().equals("Se ha enviado la imagen")&& !chat.getUrl().equals("")){
+                  val lp : RelativeLayout.LayoutParams = holder.TXT_mensaje_visto!!.layoutParams as LayoutParams
+                  lp!!.setMargins(0,245,10,0)
+                  holder.TXT_mensaje_visto!!.layoutParams = lp
+              }
+          }else{
+              holder.TXT_mensaje_visto!!.text = "Enviado"
+              if (chat.getMensaje().equals("Se ha enviado la imagen")&& !chat.getUrl().equals("")){
+                  val lp : RelativeLayout.LayoutParams = holder.TXT_mensaje_visto!!.layoutParams as LayoutParams
+                  lp!!.setMargins(0,245,10,0)
+                  holder.TXT_mensaje_visto!!.layoutParams = lp
+              }
+          }
+        }else{
+            holder.TXT_mensaje_visto!!.visibility = View.GONE
         }
 
     }
